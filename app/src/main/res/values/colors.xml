@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">#ffffffff</color>
+	<color name="colorPrimaryDark">#ff333333</color>
+	<color name="colorAccent">#ffffee58</color>
+
+	<color name="colorSummaryText">#ffffffff</color>
+	<color name="colorSummaryIcons">#ffffffff</color>
+
+	<color name="colorHorizontalDivider">#ffffffff</color>
+	<color name="colorVerticalDivider">@null</color>
+
+	<color name="colorToolbarBackground">#33000000</color>
+	<color name="colorTabsBackground">#33000000</color>
+	<color name="colorTabsIndicator">@color/colorAccent</color>
+	<color name="colorTabsText">@color/colorPrimary</color>
+	<color name="colorTabsTextSelected">@color/colorPrimary</color>
+
+	<color name="colorForecastOverlay">#66000000</color>
+	<color name="colorLightOverlay">#44ffffff</color>
+</resources>

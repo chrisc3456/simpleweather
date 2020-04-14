@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Simple Weather</string>
+
+    <!-- Units of measurement -->
+    <string name="unit_temperature_degree">\u00B0</string>
+    <string name="unit_temperature_celsius">C</string>
+    <string name="unit_temperature_fahrenheit">F</string>
+    <string name="unit_wind_speed_metric">kph</string>
+    <string name="unit_wind_speed_imperial">mph</string>
+    <string name="unit_rain_likelihood">%</string>
+    <string name="unit_rain_volume">mm/h</string>
+    <string name="unit_cloud_cover">%</string>
+    <string name="unit_humidity">%</string>
+    <string name="unit_pressure">mbar</string>
+    <string name="unit_distance_metric">km</string>
+    <string name="unit_distance_imperial">miles</string>
+
+    <!-- Menu items -->
+    <string name="menu_search">Search</string>
+    <string name="menu_current_location">Current Location</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- UI headings -->
+    <string name="heading_wind_speed">Wind Speed</string>
+    <string name="heading_wind_bearing">Direction</string>
+    <string name="heading_rain_likelihood">Likelihood</string>
+    <string name="heading_rain_volume">Volume</string>
+    <string name="heading_humidity">Humidity</string>
+    <string name="heading_pressure">Pressure</string>
+    <string name="heading_cloud_cover">Cloud Cover</string>
+    <string name="heading_visibility">Visibility</string>
+
+    <!-- UI design placeholders -->
+    <string name="placeholder_temperature">NN\u00B0</string>
+    <string name="placeholder_wind_speed">NN\nmph</string>
+</resources>

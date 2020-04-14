@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dailysnapshot"
+            type="com.simple.weather.data.models.DailySnapshot" />
+
+        <variable
+            name="dailysnapshoticon"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorSummaryText"
+            android:textStyle="bold"
+            android:text="@{dailysnapshot.getTimeAsDayName()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Day" />
+
+        <ImageView
+            android:id="@+id/imageViewDayIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@{dailysnapshoticon, default=@drawable/ic_weather_sun}"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDay"
+            app:layout_constraintStart_toStartOf="@+id/textViewDay"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDay" />
+
+        <TextView
+            android:id="@+id/textViewDayMaxTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorSummaryText"
+            android:textStyle="bold"
+            android:text="@{String.valueOf(dailysnapshot.temperatureMax).concat(@string/unit_temperature_degree)}"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewDayIcon"
+            app:layout_constraintStart_toStartOf="@+id/imageViewDayIcon"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDayIcon"
+            tools:text="@string/placeholder_temperature" />
+
+        <View
+            android:id="@+id/dividerDayTemp"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorHorizontalDivider"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDayMaxTemp"
+            app:layout_constraintStart_toStartOf="@+id/textViewDayMaxTemp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDayMaxTemp" />
+
+        <TextView
+            android:id="@+id/textViewDayMinTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorSummaryText"
+            android:text="@{String.valueOf(dailysnapshot.temperatureMin).concat(@string/unit_temperature_degree)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDayMaxTemp"
+            app:layout_constraintStart_toStartOf="@+id/textViewDayMaxTemp"
+            app:layout_constraintTop_toBottomOf="@+id/dividerDayTemp"
+            tools:text="@string/placeholder_temperature" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dimenDefaultCardViewRadius">8dp</dimen>
+    <dimen name="dimenDefaultBorderPadding">16dp</dimen>
+    <dimen name="dimenLargeWeatherIcon">200dp</dimen>
+
+</resources>

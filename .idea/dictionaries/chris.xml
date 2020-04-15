@@ -2,6 +2,7 @@
   <dictionary name="chris">
     <words>
       <w>coroutine</w>
+      <w>currentsnapshot</w>
       <w>geocoded</w>
       <w>geocoding</w>
       <w>viewmodel</w>

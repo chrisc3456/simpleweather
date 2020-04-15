@@ -8,7 +8,7 @@
 	<color name="colorSummaryIcons">#ffffffff</color>
 
 	<color name="colorHorizontalDivider">#ffffffff</color>
-	<color name="colorVerticalDivider">@null</color>
+	<color name="colorVerticalDivider">#11ffffff</color>
 
 	<color name="colorToolbarBackground">#33000000</color>
 	<color name="colorTabsBackground">#33000000</color>

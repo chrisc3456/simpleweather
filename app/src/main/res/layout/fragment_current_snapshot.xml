@@ -25,7 +25,7 @@
             android:id="@+id/imageViewWeatherType"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@{currentSnapshotBackdrop, default=@drawable/backdrop_portrait_sunny}"
+            android:src="@{currentSnapshotBackdrop, default=@drawable/backdrop_gradient_sunny}"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,81 +149,14 @@
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
+            <include
+                layout="@layout/layout_current_snapshot_details"
+                app:currentsnapshot="@{currentSnapshot}"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:context=".BlankFragment">
-
-                <include
-                    layout="@layout/layout_sun_moon"
-                    app:currentSnapshot="@{currentSnapshot}"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="horizontal">
-
-                    <include
-                        layout="@layout/layout_wind_details"
-                        app:currentSnapshot="@{currentSnapshot}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp" />
-
-                    <include
-                        layout="@layout/layout_precipitation_details"
-                        app:currentSnapshot="@{currentSnapshot}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="horizontal">
-
-                    <include
-                        layout="@layout/layout_humidity_details"
-                        app:currentSnapshot="@{currentSnapshot}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp" />
-
-                    <include
-                        layout="@layout/layout_cloud_cover_details"
-                        app:currentSnapshot="@{currentSnapshot}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <include
-                    layout="@layout/layout_week_forecast"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_width="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" />
 
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

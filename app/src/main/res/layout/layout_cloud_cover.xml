@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="currentsnapshot"
+            type="com.simple.weather.data.models.CurrentSnapshot" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:contentPadding="8dp"
+        app:cardBackgroundColor="@color/colorLightOverlay"
+        app:cardCornerRadius="@dimen/dimenDefaultCardViewRadius"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewCloudCover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cloud_cover"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewCloudCoverTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/heading_cloud_cover"
+                android:textColor="@color/colorSummaryText"
+                android:textSize="@dimen/dimenTextSizeFieldTitle"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewCloudCover"
+                app:layout_constraintStart_toStartOf="@+id/imageViewCloudCover"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewCloudCover" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@{String.valueOf(currentsnapshot.cloudCover).concat(@string/unit_cloud_cover)}"
+                android:textStyle="bold"
+                android:textColor="@color/colorSummaryText"
+                android:textSize="@dimen/dimenTextSizeFieldValue"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewCloudCover"
+                app:layout_constraintStart_toStartOf="@+id/imageViewCloudCover"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCloudCoverTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

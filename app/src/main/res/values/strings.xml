@@ -11,7 +11,7 @@
     <string name="unit_rain_volume">mm/h</string>
     <string name="unit_cloud_cover">%</string>
     <string name="unit_humidity">%</string>
-    <string name="unit_pressure">mbar</string>
+    <string name="unit_pressure">mb</string>
     <string name="unit_distance_metric">km</string>
     <string name="unit_distance_imperial">miles</string>
 
@@ -23,14 +23,22 @@
     <!-- UI headings -->
     <string name="heading_wind_speed">Wind Speed</string>
     <string name="heading_wind_bearing">Direction</string>
-    <string name="heading_rain_likelihood">Likelihood</string>
+    <string name="heading_rain_likelihood">Rain Chance</string>
     <string name="heading_rain_volume">Volume</string>
     <string name="heading_humidity">Humidity</string>
     <string name="heading_pressure">Pressure</string>
     <string name="heading_cloud_cover">Cloud Cover</string>
     <string name="heading_visibility">Visibility</string>
+    <string name="heading_sunrise">Sunrise</string>
+    <string name="heading_sunset">Sunset</string>
+    <string name="heading_moon_phase">Moon</string>
 
     <!-- UI design placeholders -->
     <string name="placeholder_temperature">NN\u00B0</string>
     <string name="placeholder_wind_speed">NN\nmph</string>
+
+    <!-- UI group titles -->
+    <string name="title_sun_moon">Sun and Moon</string>
+    <string name="title_misc_details">Details</string>
+    <string name="title_week_forecast">Seven Day Forecast</string>
 </resources>

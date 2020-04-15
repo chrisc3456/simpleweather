@@ -12,15 +12,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.simple.weather.R
 import com.simple.weather.app.SimpleWeatherApp
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
 import com.simple.weather.data.models.Result
 import com.simple.weather.databinding.FragmentCurrentSnapshotBinding
+import com.simple.weather.ui.common.DividerItemDecorator
 import com.simple.weather.util.FadeLayoutAppBarOffsetChangedListener
 import com.simple.weather.util.TitleOnCollapseAppbarOffsetListener
 import com.simple.weather.util.ToolbarTitleDisplayProvider
@@ -81,12 +80,10 @@ class CurrentSnapshotFragment : Fragment() {
     }
 
     private fun setupRecycler() {
-        val itemDecorator = DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
-        itemDecorator.setDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.divider_vertical)!!)
-        recyclerViewDailySnapshot.addItemDecoration(itemDecorator)
+        recyclerViewDailySnapshot.addItemDecoration(DividerItemDecorator(ContextCompat.getDrawable(requireContext(), R.drawable.divider_vertical)!!))
 
         recyclerViewDailySnapshot.adapter = weekForecastAdapter
-        recyclerViewDailySnapshot.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        recyclerViewDailySnapshot.layoutManager = GridLayoutManager(requireContext(), 7)
     }
 
     private fun setupBindings(view: View) {

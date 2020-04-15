@@ -19,7 +19,7 @@ class CurrentSnapshotWeekAdapter: RecyclerView.Adapter<CurrentSnapshotWeekViewHo
     }
 
     override fun getItemCount(): Int {
-        return dailySnapshots.size
+        return dailySnapshots.size - 1
     }
 
     override fun onBindViewHolder(holder: CurrentSnapshotWeekViewHolder, position: Int) {

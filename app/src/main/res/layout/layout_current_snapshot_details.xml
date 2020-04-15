@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="currentsnapshot"
+            type="com.simple.weather.data.models.CurrentSnapshot" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewGroupSunMoon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_sun_moon"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="@dimen/dimenTextSizeGroupTitle"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dividerSunAndMoon"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorSummaryIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewGroupSunMoon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewGroupSunMoon"
+            app:layout_constraintTop_toTopOf="@id/textViewGroupSunMoon" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutGroupSunMoon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGroupSunMoon">
+
+            <include
+                layout="@layout/layout_sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_moon_phase"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+            android:id="@+id/textViewGroupDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_misc_details"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="@dimen/dimenTextSizeGroupTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutGroupSunMoon" />
+
+        <View
+            android:id="@+id/dividerDetails"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorSummaryIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewGroupDetails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewGroupDetails"
+            app:layout_constraintTop_toTopOf="@id/textViewGroupDetails" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutGroupDetailsTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGroupDetails">
+
+            <include
+                layout="@layout/layout_wind_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_rain_chance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_cloud_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutGroupDetailsBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutGroupDetailsTop">
+
+            <include
+                layout="@layout/layout_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+
+            <include
+                layout="@layout/layout_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:currentsnapshot="@{currentsnapshot}" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/textViewGroupWeekForecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_week_forecast"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="@dimen/dimenTextSizeGroupTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutGroupDetailsBottom" />
+
+        <View
+            android:id="@+id/dividerWeekForecast"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorSummaryIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewGroupWeekForecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewGroupWeekForecast"
+            app:layout_constraintTop_toTopOf="@id/textViewGroupWeekForecast" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_week_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGroupWeekForecast" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

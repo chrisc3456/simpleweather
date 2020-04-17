@@ -1,7 +1,6 @@
 package com.simple.weather.data.models
 
 import com.simple.weather.util.MoonPhaseConverter
-import com.simple.weather.util.WindBearingConverter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,9 +39,5 @@ data class CurrentSnapshot(
 
     fun getMoonPhaseDescription(): String {
         return MoonPhaseConverter.convertPhaseToDescription(moonPhase)
-    }
-
-    fun getWindBearingDescription(): String {
-        return WindBearingConverter.convertDegreesToCompass(windBearing)
     }
 }

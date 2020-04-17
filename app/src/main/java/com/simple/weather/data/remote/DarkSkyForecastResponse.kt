@@ -13,10 +13,10 @@ object DarkSkyForecastResponse {
         val latitude: Double,
         val longitude: Double,
         val timezone: String,
-        val currently: ForecastDataPoint,
-        val minutely: ForecastMinutely,
-        val hourly: ForecastHourly,
-        val daily: ForecastDaily
+        val currently: ForecastDataPoint?,
+        val minutely: ForecastMinutely?,
+        val hourly: ForecastHourly?,
+        val daily: ForecastDaily?
     )
 
     data class ForecastMinutely(
@@ -79,8 +79,8 @@ object DarkSkyForecastResponse {
      * Converter function to map api response object to internal model
      */
     fun ForecastResponse.toCurrentSnapshot(): CurrentSnapshot {
-        val currently = this.currently
-        val daily = this.daily.data.first()
+        val currently = this.currently!!
+        val daily = this.daily!!.data.first()
 
         return CurrentSnapshot(
             latitude = latitude,
@@ -91,7 +91,7 @@ object DarkSkyForecastResponse {
             precipitationVolume = currently.precipIntensity,
             precipitationLikelihood = (currently.precipProbability * 100).toInt(),
             pressure = currently.pressure.toInt(),
-            summary = minutely.summary,
+            summary = currently.summary,
             temperature = currently.temperature.toInt(),
             time = currently.time,
             visibility = (currently.visibility).toInt(),

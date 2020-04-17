@@ -3,10 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/locationForecastFragment">
+    app:startDestination="@id/currentSnapshotFragment">
     <fragment
-        android:id="@+id/locationForecastFragment"
+        android:id="@+id/currentSnapshotFragment"
         android:name="com.simple.weather.ui.currentsnapshot.CurrentSnapshotFragment"
-        android:label="LocationForecastFragment"
-        tools:layout="@layout/fragment_current_snapshot"/>
+        android:label="CurrentSnapshotFragment"
+        tools:layout="@layout/fragment_current_snapshot">
+        <action
+            android:id="@+id/action_currentSnapshotFragment_to_weekForecastFragment"
+            app:destination="@id/weekForecastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weekForecastFragment"
+        android:name="com.simple.weather.ui.weekforecast.WeekForecastFragment"
+        android:label="WeekForecastFragment"
+        tools:layout="@layout/fragment_week_forecast">
+        <argument
+            android:name="forecastTime"
+            app:argType="long" />
+    </fragment>
 </navigation>

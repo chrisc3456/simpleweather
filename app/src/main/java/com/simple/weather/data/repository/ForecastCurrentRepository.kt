@@ -34,7 +34,7 @@ class ForecastCurrentRepository @Inject constructor(private val forecastService:
             latitude,
             longitude,
             "uk2",      //TODO: Update to use shared preferences to specify required units
-            listOf("hourly", "alerts", "flags")
+            listOf("hourly", "minutely", "alerts", "flags")
         )
 
         return try {

@@ -34,7 +34,6 @@ class CurrentSnapshotFragment : Fragment() {
 
     private lateinit var currentSnapshotDetailsBinding: FragmentCurrentSnapshotBinding
     private val weekForecastAdapter = CurrentSnapshotWeekAdapter()
-    private var currentLocationName: String = "Locating..."
 
     // Inject an instance of the view model from the dagger dependency graph
     @Inject
@@ -42,7 +41,10 @@ class CurrentSnapshotFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as SimpleWeatherApp).weatherComponent.inject(this)
+        (requireActivity().application as SimpleWeatherApp).apply {
+            weatherComponent.inject(this@CurrentSnapshotFragment)
+            currentLocationName = resources.getString(R.string.placeholder_finding_location)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -67,7 +69,7 @@ class CurrentSnapshotFragment : Fragment() {
         // Add offset change listeners to control title display and fading of views depending on scroll position of the appbar layout
         appbar.addOnOffsetChangedListener(TitleOnCollapseAppbarOffsetListener(collapsingToolbarForecast, object: ToolbarTitleDisplayProvider {
             override fun getTitle(): String {
-                return currentLocationName
+                return (requireActivity().application as SimpleWeatherApp).currentLocationName
             }
         })
         )
@@ -89,7 +91,7 @@ class CurrentSnapshotFragment : Fragment() {
     private fun setupBindings(view: View) {
         currentSnapshotDetailsBinding = FragmentCurrentSnapshotBinding.bind(view)
         currentSnapshotDetailsBinding.lifecycleOwner = viewLifecycleOwner
-        currentSnapshotDetailsBinding.location = "Finding location..."
+        currentSnapshotDetailsBinding.location = resources.getString(R.string.placeholder_finding_location)
     }
 
     private fun addObservers() {
@@ -150,7 +152,7 @@ class CurrentSnapshotFragment : Fragment() {
         val locationData = result.resultData
 
         if (locationData != null) {
-            currentLocationName = locationData.name
+            (requireActivity().application as SimpleWeatherApp).currentLocationName = locationData.name
             currentSnapshotDetailsBinding.location = locationData.name
         }
 

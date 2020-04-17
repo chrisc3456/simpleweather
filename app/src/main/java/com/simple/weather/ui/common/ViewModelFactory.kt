@@ -21,14 +21,7 @@ class ViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<
                 }
             }
         }
-        if (creator == null) {
-            throw IllegalArgumentException("Unknown model class $modelClass")
-        }
 
-        try {
-            return creator.get() as T
-        } catch (e: Exception) {
-            throw RuntimeException(e)
-        }
+        return creator?.get() as T
     }
 }

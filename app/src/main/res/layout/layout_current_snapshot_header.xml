@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="currentSnapshot"
+            type="com.simple.weather.data.models.CurrentSnapshot" />
+
+        <variable
+            name="location"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(currentSnapshot.temperature).concat(@string/unit_temperature_degree)}"
+            android:textAlignment="center"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="120sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="NN" />
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{location}"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Location" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{currentSnapshot.getSnapshotTime()}"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="24sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Sunday 12 Apr, 3pm" />
+
+        <TextView
+            android:id="@+id/textViewSummary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{currentSnapshot.summary}"
+            android:textAlignment="center"
+            android:textColor="@color/colorSummaryText"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLocation"
+            tools:text="Summary text" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTemperature"
+            app:layout_constraintStart_toStartOf="@+id/textViewTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSummary"
+            app:srcCompat="@drawable/ic_weather_sun" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

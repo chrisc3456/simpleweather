@@ -24,7 +24,7 @@
                 android:id="@+id/imageViewMoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_moon_phase_new"
+                app:srcCompat="@drawable/ic_moon_phase_new"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

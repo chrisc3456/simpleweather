@@ -41,10 +41,7 @@ class CurrentSnapshotFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as SimpleWeatherApp).apply {
-            weatherComponent.inject(this@CurrentSnapshotFragment)
-            currentLocationName = resources.getString(R.string.placeholder_finding_location)
-        }
+        (requireActivity().application as SimpleWeatherApp).weatherComponent.inject(this@CurrentSnapshotFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -74,7 +71,7 @@ class CurrentSnapshotFragment : Fragment() {
         })
         )
         appbar.addOnOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener.FadeMode.FADE_IN, frameOverlay, 1f))
-        appbar.addOnOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener.FadeMode.FADE_OUT, constraintSummaryDetails, 1.5f))
+        appbar.addOnOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener(FadeLayoutAppBarOffsetChangedListener.FadeMode.FADE_OUT, layoutCurrentSnapshotHeader, 1.5f))
     }
 
     private fun setupViewModel() {
@@ -91,7 +88,7 @@ class CurrentSnapshotFragment : Fragment() {
     private fun setupBindings(view: View) {
         currentSnapshotDetailsBinding = FragmentCurrentSnapshotBinding.bind(view)
         currentSnapshotDetailsBinding.lifecycleOwner = viewLifecycleOwner
-        currentSnapshotDetailsBinding.location = resources.getString(R.string.placeholder_finding_location)
+        currentSnapshotDetailsBinding.currentSnapshotBackdrop = R.drawable.backdrop_gradient_sunny
     }
 
     private fun addObservers() {
@@ -140,6 +137,9 @@ class CurrentSnapshotFragment : Fragment() {
             currentSnapshotDetailsBinding.currentSnapshot = snapshot
             currentSnapshotDetailsBinding.currentSnapshotBackdrop = WeatherIconConverter.getBackdropIdForDescription(snapshot.icon)
             weekForecastAdapter.setDailySnapshots(snapshot.dailySnapshots)
+
+            progressBar.visibility = View.GONE
+            layoutCurrentSnapshotHeader.visibility = View.VISIBLE
         }
 
         displayResultError(result)

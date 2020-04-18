@@ -34,15 +34,15 @@ object WeatherIconConverter {
             "clear-day" -> R.drawable.backdrop_gradient_sunny
             "clear-night" -> R.drawable.backdrop_gradient_clear_night
             "rain" -> R.drawable.backdrop_gradient_rainy
-            "snow" -> R.drawable.backdrop_gradient_rainy
-            "sleet" -> R.drawable.backdrop_gradient_rainy
-            "wind" -> R.drawable.backdrop_gradient_cloudy
-            "fog" -> R.drawable.backdrop_gradient_cloudy
+            "snow" -> R.drawable.backdrop_gradient_snow
+            "sleet" -> R.drawable.backdrop_gradient_sleet
+            "wind" -> R.drawable.backdrop_gradient_wind
+            "fog" -> R.drawable.backdrop_gradient_fog
             "cloudy" -> R.drawable.backdrop_gradient_cloudy
             "partly-cloudy-day" -> R.drawable.backdrop_gradient_cloudy
             "partly-cloudy-night" -> R.drawable.backdrop_gradient_cloudy_night
             "hail" -> R.drawable.backdrop_gradient_rainy
-            "thunderstorm" -> R.drawable.backdrop_gradient_rainy
+            "thunderstorm" -> R.drawable.backdrop_gradient_thunderstorm
             "tornado" -> R.drawable.backdrop_gradient_rainy
             else -> R.drawable.backdrop_gradient_sunny
         }

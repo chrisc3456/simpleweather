@@ -103,22 +103,22 @@ class WeatherIconConverterTest {
 
     @Test
     fun getBackdropIdForDescription_snow_snow() {
-        Assert.assertEquals(R.drawable.backdrop_gradient_rainy, WeatherIconConverter.getBackdropIdForDescription("snow"))
+        Assert.assertEquals(R.drawable.backdrop_gradient_snow, WeatherIconConverter.getBackdropIdForDescription("snow"))
     }
 
     @Test
     fun getBackdropIdForDescription_sleet_sleet() {
-        Assert.assertEquals(R.drawable.backdrop_gradient_rainy, WeatherIconConverter.getBackdropIdForDescription("sleet"))
+        Assert.assertEquals(R.drawable.backdrop_gradient_sleet, WeatherIconConverter.getBackdropIdForDescription("sleet"))
     }
 
     @Test
     fun getBackdropIdForDescription_wind_wind() {
-        Assert.assertEquals(R.drawable.backdrop_gradient_cloudy, WeatherIconConverter.getBackdropIdForDescription("wind"))
+        Assert.assertEquals(R.drawable.backdrop_gradient_wind, WeatherIconConverter.getBackdropIdForDescription("wind"))
     }
 
     @Test
     fun getBackdropIdForDescription_fog_fog() {
-        Assert.assertEquals(R.drawable.backdrop_gradient_cloudy, WeatherIconConverter.getBackdropIdForDescription("fog"))
+        Assert.assertEquals(R.drawable.backdrop_gradient_fog, WeatherIconConverter.getBackdropIdForDescription("fog"))
     }
 
     @Test
@@ -143,7 +143,7 @@ class WeatherIconConverterTest {
 
     @Test
     fun getBackdropIdForDescription_thunderstorm_thunderstorm() {
-        Assert.assertEquals(R.drawable.backdrop_gradient_rainy, WeatherIconConverter.getBackdropIdForDescription("thunderstorm"))
+        Assert.assertEquals(R.drawable.backdrop_gradient_thunderstorm, WeatherIconConverter.getBackdropIdForDescription("thunderstorm"))
     }
 
     @Test

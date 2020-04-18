@@ -9,6 +9,10 @@
             type="com.simple.weather.data.models.CurrentSnapshot" />
 
         <variable
+            name="currentSnapshotIcon"
+            type="Integer" />
+
+        <variable
             name="location"
             type="String" />
     </data>
@@ -36,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="64dp"
             android:text="@{location}"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -84,11 +88,14 @@
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             android:adjustViewBounds="true"
-            app:layout_constraintEnd_toEndOf="@+id/textViewTemperature"
-            app:layout_constraintStart_toStartOf="@+id/textViewTemperature"
+            app:layout_constraintEnd_toEndOf="@+id/textViewSummary"
+            app:layout_constraintStart_toStartOf="@+id/textViewSummary"
             app:layout_constraintTop_toBottomOf="@+id/textViewSummary"
-            app:srcCompat="@drawable/ic_weather_sun" />
+            app:srcCompat="@{currentSnapshotIcon}"
+            tools:src="@drawable/ic_weather_sun" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

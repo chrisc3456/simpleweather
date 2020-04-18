@@ -16,7 +16,7 @@ object WeatherIconConverter {
             "sleet" -> R.drawable.ic_weather_sleet
             "wind" -> R.drawable.ic_weather_wind
             "fog" -> R.drawable.ic_weather_fog
-            "backdrop_gradient_cloudy" -> R.drawable.ic_weather_cloudy
+            "cloudy" -> R.drawable.ic_weather_cloudy
             "partly-cloudy-day" -> R.drawable.ic_weather_partly_cloudy
             "partly-cloudy-night" -> R.drawable.ic_weather_night_partly_cloudy
             "hail" -> R.drawable.ic_weather_hail

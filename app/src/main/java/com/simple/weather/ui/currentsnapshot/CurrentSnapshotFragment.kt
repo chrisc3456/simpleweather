@@ -136,6 +136,7 @@ class CurrentSnapshotFragment : Fragment() {
         if (snapshot != null) {
             currentSnapshotDetailsBinding.currentSnapshot = snapshot
             currentSnapshotDetailsBinding.currentSnapshotBackdrop = WeatherIconConverter.getBackdropIdForDescription(snapshot.icon)
+            currentSnapshotDetailsBinding.currentSnapshotIcon = WeatherIconConverter.getIconIdForDescription(snapshot.icon)
             weekForecastAdapter.setDailySnapshots(snapshot.dailySnapshots)
 
             progressBar.visibility = View.GONE

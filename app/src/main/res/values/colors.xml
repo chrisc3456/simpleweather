@@ -7,8 +7,9 @@
 	<color name="colorSummaryText">#ffffffff</color>
 	<color name="colorSummaryIcons">#ffffffff</color>
 
-	<color name="colorHorizontalDivider">#ffffffff</color>
-	<color name="colorVerticalDivider">#11ffffff</color>
+	<color name="colorDividerHorizontal">#ffffffff</color>
+	<color name="colorListSeparatorVertical">#11ffffff</color>
+	<color name="colorListSeparatorHorizontal">@null</color>
 
 	<color name="colorToolbarBackground">#33000000</color>
 	<color name="colorTabsBackground">#33000000</color>
@@ -16,6 +17,8 @@
 	<color name="colorTabsText">@color/colorPrimary</color>
 	<color name="colorTabsTextSelected">@color/colorPrimary</color>
 
-	<color name="colorForecastOverlay">#66000000</color>
+	<color name="colorForecastOverlay">#44000000</color>
 	<color name="colorLightOverlay">#44ffffff</color>
+
+	<color name="colorProgressBar">@color/colorSummaryIcons</color>
 </resources>

@@ -3,7 +3,9 @@ package com.simple.weather.di.module
 import com.simple.weather.data.remote.DarkSkyWeatherForecastService
 import com.simple.weather.data.remote.GoogleGeocodingService
 import com.simple.weather.data.repository.CurrentSnapshotRepository
+import com.simple.weather.data.repository.DayForecastRepository
 import com.simple.weather.data.repository.ForecastCurrentRepository
+import com.simple.weather.data.repository.ForecastDayRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -22,5 +24,11 @@ class RepositoryModule {
     @Provides
     fun provideCurrentSnapshotRepository(forecastService: DarkSkyWeatherForecastService, geocodingService: GoogleGeocodingService): CurrentSnapshotRepository {
         return ForecastCurrentRepository(forecastService, geocodingService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDayForecastRepository(forecastService: DarkSkyWeatherForecastService): DayForecastRepository {
+        return ForecastDayRepository(forecastService)
     }
 }

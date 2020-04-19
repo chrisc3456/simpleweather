@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.simple.weather.di.annotation.ViewModelKey
 import com.simple.weather.ui.common.ViewModelFactory
 import com.simple.weather.ui.currentsnapshot.CurrentSnapshotViewModel
+import com.simple.weather.ui.dayforecast.DayForecastViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -19,4 +20,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CurrentSnapshotViewModel::class)
     abstract fun bindCurrentSnapshotViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DayForecastViewModel::class)
+    abstract fun bindDayForecastViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

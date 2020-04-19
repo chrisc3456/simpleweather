@@ -7,7 +7,7 @@ import com.simple.weather.ui.dayforecast.DayForecastFragment
 
 const val ARG_DAY_NUMBER = "daynumber"
 
-class WeekForecastViewPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+class WeekForecastViewPagerAdapter(parent: Fragment): FragmentStateAdapter(parent) {
     override fun getItemCount(): Int {
         return 7
     }

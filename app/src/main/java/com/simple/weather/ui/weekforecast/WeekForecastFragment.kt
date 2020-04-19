@@ -21,7 +21,7 @@ class WeekForecastFragment : Fragment() {
 
     private lateinit var weekForecastAdapter: WeekForecastViewPagerAdapter
     private var defaultForecastTime: Long = 0
-    private var defaultTab: Int? = null
+    private var defaultTab: Int = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         defaultForecastTime = WeekForecastFragmentArgs.fromBundle(requireArguments()).forecastTime
@@ -30,14 +30,15 @@ class WeekForecastFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewPager()
         setupToolbar()
+        setupViewPager()
         setupTabLayout()
     }
 
     private fun setupViewPager() {
         weekForecastAdapter = WeekForecastViewPagerAdapter(this)
         viewPagerWeekForecast.adapter = weekForecastAdapter
+        viewPagerWeekForecast.offscreenPageLimit = 1
     }
 
     private fun setupTabLayout() {
@@ -45,8 +46,13 @@ class WeekForecastFragment : Fragment() {
             setupTabForPosition(tab, position)
         }.attach()
 
-        // Select the default tab based on the passed argument date value
-        tabLayoutWeekForecast.selectTab(tabLayoutWeekForecast.getTabAt(defaultTab ?: 0))
+        // Setting currentItem doesn't always work with event timing, hence processing in a delayed handler
+        // See bottom answer here: https://stackoverflow.com/questions/28968512/viewpager-set-current-page-programmatically
+        viewPagerWeekForecast.postDelayed(
+            Runnable {
+                kotlin.run { viewPagerWeekForecast.setCurrentItem(defaultTab, true) }
+            }, 10
+        )
     }
 
     private fun setupTabForPosition(tab: TabLayout.Tab, position: Int) {
@@ -54,7 +60,7 @@ class WeekForecastFragment : Fragment() {
         calendar.add(Calendar.DAY_OF_YEAR, position)
 
         // The first tab whose date is beyond that which is provided via arguments, is the one which was selected
-        if (defaultTab == null && (calendar.timeInMillis / 1000) > defaultForecastTime) {
+        if (defaultTab == -1 && (calendar.timeInMillis / 1000) > defaultForecastTime) {
             defaultTab = position
         }
 

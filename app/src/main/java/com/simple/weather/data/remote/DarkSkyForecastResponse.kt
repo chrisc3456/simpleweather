@@ -2,6 +2,10 @@ package com.simple.weather.data.remote
 
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.DailySnapshot
+import com.simple.weather.data.models.DayForecast
+import com.simple.weather.data.models.HourlyForecast
+import com.simple.weather.util.UnixTimeConverter
+import java.util.*
 
 object DarkSkyForecastResponse {
 
@@ -76,7 +80,7 @@ object DarkSkyForecastResponse {
     )
 
     /**
-     * Converter function to map api response object to internal model
+     * Converter function to map api response object to internal model for a current snapshot forecast
      */
     fun ForecastResponse.toCurrentSnapshot(): CurrentSnapshot {
         val currently = this.currently!!
@@ -116,5 +120,27 @@ object DarkSkyForecastResponse {
                 temperatureMin = it.temperatureLow.toInt()
             )
         }
+    }
+
+    /**
+     * Converter function to map api response object to internal model for a single day forecast
+     */
+    fun ForecastResponse.toDayForecast(): DayForecast {
+
+        val daily = this.daily?.data?.first()
+
+        return DayForecast(
+            daily?.time ?: 0,
+            daily?.icon ?: "",
+            hourly?.data?.map {
+                HourlyForecast(
+                    hour = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.HOUR_OF_DAY),
+                    minutes = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.MINUTE),
+                    temperature = it.temperature.toInt(),
+                    summary = it.summary,
+                    iconDescription = it.icon
+                )
+            } ?: listOf()
+        )
     }
 }

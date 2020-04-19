@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="hourlyForecast"
+            type="com.simple.weather.data.models.HourlyForecast" />
+
+        <variable
+            name="hourlyForecastIcon"
+            type="Integer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="8dp"
+        app:cardBackgroundColor="@color/colorLightOverlay"
+        app:cardCornerRadius="@dimen/dimenDefaultCardViewRadius"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{hourlyForecast.getDisplayHours()}"
+                android:textAlignment="center"
+                android:textColor="@color/colorSummaryText"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="15" />
+
+            <TextView
+                android:id="@+id/textViewMinute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{hourlyForecast.getDisplayMinutes()}"
+                android:textAlignment="center"
+                android:textColor="@color/colorSummaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewHour"
+                app:layout_constraintStart_toEndOf="@id/textViewHour"
+                app:layout_constraintTop_toTopOf="@+id/textViewHour"
+                tools:text="00" />
+
+            <ImageView
+                android:id="@+id/imageViewHourIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewMinute"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@{hourlyForecastIcon}"
+                tools:src="@drawable/ic_weather_sun" />
+
+            <TextView
+                android:id="@+id/textViewHourSummary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{hourlyForecast.summary}"
+                android:textColor="@color/colorSummaryText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewHourTemperature"
+                app:layout_constraintStart_toEndOf="@id/imageViewHourIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Partly cloudy" />
+
+            <TextView
+                android:id="@+id/textViewHourTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{String.valueOf(hourlyForecast.temperature).concat(@string/unit_temperature_degree)}"
+                android:textColor="@color/colorSummaryText"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/placeholder_temperature" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

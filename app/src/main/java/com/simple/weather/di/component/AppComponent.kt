@@ -6,6 +6,7 @@ import com.simple.weather.di.module.NetworkModule
 import com.simple.weather.di.module.RepositoryModule
 import com.simple.weather.di.module.ViewModelModule
 import com.simple.weather.ui.currentsnapshot.CurrentSnapshotFragment
+import com.simple.weather.ui.dayforecast.DayForecastFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -31,4 +32,5 @@ interface AppComponent {
 
     // This tells Dagger that the appropriate fragments can request injection so the dependency graph needs to satisfy the field dependencies that the fragment is requesting
     fun inject(currentSnapshotFragment: CurrentSnapshotFragment)
+    fun inject(dayForecastFragment: DayForecastFragment)
 }

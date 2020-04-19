@@ -10,15 +10,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.simple.weather.R
-import com.simple.weather.app.SimpleWeatherApp
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
 import com.simple.weather.data.models.Result
 import com.simple.weather.databinding.FragmentCurrentSnapshotBinding
+import com.simple.weather.ui.common.BaseFragment
 import com.simple.weather.ui.common.DividerItemDecorator
 import com.simple.weather.util.FadeLayoutAppBarOffsetChangedListener
 import com.simple.weather.util.TitleOnCollapseAppbarOffsetListener
@@ -30,7 +29,7 @@ import javax.inject.Inject
 
 const val PERMISSION_ID_LOCATION = 1
 
-class CurrentSnapshotFragment : Fragment() {
+class CurrentSnapshotFragment : BaseFragment() {
 
     private lateinit var currentSnapshotDetailsBinding: FragmentCurrentSnapshotBinding
     private val weekForecastAdapter = CurrentSnapshotWeekAdapter()
@@ -41,7 +40,7 @@ class CurrentSnapshotFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as SimpleWeatherApp).weatherComponent.inject(this@CurrentSnapshotFragment)
+        weatherApplication.weatherComponent.inject(this@CurrentSnapshotFragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,7 +65,7 @@ class CurrentSnapshotFragment : Fragment() {
         // Add offset change listeners to control title display and fading of views depending on scroll position of the appbar layout
         appbar.addOnOffsetChangedListener(TitleOnCollapseAppbarOffsetListener(collapsingToolbarForecast, object: ToolbarTitleDisplayProvider {
             override fun getTitle(): String {
-                return (requireActivity().application as SimpleWeatherApp).currentLocationName
+                return weatherApplication.currentLocationName
             }
         })
         )
@@ -79,7 +78,9 @@ class CurrentSnapshotFragment : Fragment() {
     }
 
     private fun setupRecycler() {
-        recyclerViewDailySnapshot.addItemDecoration(DividerItemDecorator(ContextCompat.getDrawable(requireContext(), R.drawable.divider_vertical)!!))
+        recyclerViewDailySnapshot.addItemDecoration(
+            DividerItemDecorator(ContextCompat.getDrawable(requireContext(), R.drawable.divider_vertical)!!, DividerItemDecorator.ViewOrientation.HORIZONTAL)
+        )
 
         recyclerViewDailySnapshot.adapter = weekForecastAdapter
         recyclerViewDailySnapshot.layoutManager = GridLayoutManager(requireContext(), 7)
@@ -88,7 +89,7 @@ class CurrentSnapshotFragment : Fragment() {
     private fun setupBindings(view: View) {
         currentSnapshotDetailsBinding = FragmentCurrentSnapshotBinding.bind(view)
         currentSnapshotDetailsBinding.lifecycleOwner = viewLifecycleOwner
-        currentSnapshotDetailsBinding.currentSnapshotBackdrop = R.drawable.backdrop_gradient_sunny
+        currentSnapshotDetailsBinding.currentSnapshotBackdrop = R.drawable.backdrop_gradient_rainy
     }
 
     private fun addObservers() {
@@ -153,7 +154,11 @@ class CurrentSnapshotFragment : Fragment() {
         val locationData = result.resultData
 
         if (locationData != null) {
-            (requireActivity().application as SimpleWeatherApp).currentLocationName = locationData.name
+            weatherApplication.apply {
+                currentLocationName = locationData.name
+                currentLocationLatitude = locationData.latitude
+                currentLocationLongitude = locationData.longitude
+            }
             currentSnapshotDetailsBinding.location = locationData.name
         }
 

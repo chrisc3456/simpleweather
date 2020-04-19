@@ -38,6 +38,6 @@
 
     <!-- UI placeholders -->
     <string name="placeholder_temperature">NN\u00B0</string>
-    <string name="placeholder_wind_speed">NN\nmph</string>
-    <string name="placeholder_finding_location">Locating…</string>
+    <string name="placeholder_wind_speed">NNmph</string>
+    <string name="placeholder_rain_chance">NN%</string>
 </resources>

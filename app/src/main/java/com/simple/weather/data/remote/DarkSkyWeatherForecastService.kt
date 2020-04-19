@@ -7,14 +7,21 @@ import retrofit2.http.Query
 
 interface DarkSkyWeatherForecastService {
 
-    // To get a forecast for a specific time add a {time} element to the path with the format [YYYY]-[MM]-[DD]T[HH]:[MM]:[SS][timezone]...
-    // @Path("time") time: String
-
     @GET("forecast/{apiKey}/{latitude},{longitude}")
     fun getWeatherForecast(
         @Path("apiKey") apiKey: String,
         @Path("latitude") latitude: Double,
         @Path("longitude") longitude: Double,
+        @Query("units") units: String,
+        @Query("exclude") exclude: List<String>
+    ): Call<DarkSkyForecastResponse.ForecastResponse>
+
+    @GET("forecast/{apiKey}/{latitude},{longitude},{time}")
+    fun getWeatherForecastFromTime(
+        @Path("apiKey") apiKey: String,
+        @Path("latitude") latitude: Double,
+        @Path("longitude") longitude: Double,
+        @Path("time") time: String,             //[YYYY]-[MM]-[DD]T[HH]:[MM]:[SS][timezone]
         @Query("units") units: String,
         @Query("exclude") exclude: List<String>
     ): Call<DarkSkyForecastResponse.ForecastResponse>

@@ -62,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
-            android:background="@color/colorHorizontalDivider"
+            android:background="@color/colorDividerHorizontal"
             app:layout_constraintEnd_toEndOf="@+id/textViewDayMaxTemp"
             app:layout_constraintStart_toStartOf="@+id/textViewDayMaxTemp"
             app:layout_constraintTop_toBottomOf="@+id/textViewDayMaxTemp" />

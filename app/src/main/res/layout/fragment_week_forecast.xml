@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="currentdaybackdrop"
+            name="currentDayBackdrop"
             type="Integer" />
     </data>
 
@@ -16,11 +17,19 @@
             android:id="@+id/imageViewBackdrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@{currentdaybackdrop, default=@drawable/backdrop_gradient_sunny}"
+            tools:src="@drawable/backdrop_gradient_rainy"
+            app:srcCompat="@{currentDayBackdrop, default=@drawable/backdrop_gradient_sunny}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/frameOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorForecastOverlay"
+            android:alpha="1" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarWeekForecast"
@@ -40,7 +49,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarWeekForecast"
             app:tabIndicatorColor="@color/colorAccent"
-            app:tabMode="scrollable" />
+            app:tabIndicatorHeight="5dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorSummaryText"
+            app:tabTextColor="@color/colorForecastOverlay" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerWeekForecast"

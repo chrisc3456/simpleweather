@@ -12,6 +12,8 @@ import com.simple.weather.di.module.AppModule
 class SimpleWeatherApp: Application() {
 
     var currentLocationName: String = ""
+    var currentLocationLatitude: Double = 0.0
+    var currentLocationLongitude: Double = 0.0
 
     // Reference to the application dependency graph which is used across the whole app
     val weatherComponent: AppComponent = DaggerAppComponent.builder()

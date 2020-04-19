@@ -20,4 +20,4 @@ Weather forecast application with a clean UI style
 
 
 ![screenshot](https://github.com/chrisc3456/simpleweather/blob/master/screenshot_main.png)
-![screenshot](https://github.com/chrisc3456/simpleweather/blob/master/screenshot_details.png)
+![screenshot](https://github.com/chrisc3456/simpleweather/blob/master/screenshot_detail.png)

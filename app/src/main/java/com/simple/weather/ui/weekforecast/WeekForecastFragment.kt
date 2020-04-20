@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.simple.weather.R
-import com.simple.weather.app.SimpleWeatherApp
+import com.simple.weather.SimpleWeatherApp
 import kotlinx.android.synthetic.main.fragment_week_forecast.*
 import java.text.SimpleDateFormat
 import java.util.*

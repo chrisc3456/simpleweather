@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
-import com.simple.weather.app.SimpleWeatherApp
+import com.simple.weather.SimpleWeatherApp
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
 import com.simple.weather.data.models.Result

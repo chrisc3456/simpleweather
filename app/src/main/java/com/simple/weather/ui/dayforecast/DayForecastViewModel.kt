@@ -3,7 +3,7 @@ package com.simple.weather.ui.dayforecast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.simple.weather.app.SimpleWeatherApp
+import com.simple.weather.SimpleWeatherApp
 import com.simple.weather.data.models.DayForecast
 import com.simple.weather.data.models.Result
 import com.simple.weather.data.repository.DayForecastRepository

@@ -2,7 +2,7 @@ package com.simple.weather.ui.common
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.simple.weather.app.SimpleWeatherApp
+import com.simple.weather.SimpleWeatherApp
 
 open class BaseFragment: Fragment() {
     lateinit var weatherApplication: SimpleWeatherApp

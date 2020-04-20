@@ -1,6 +1,6 @@
 package com.simple.weather.di.module
 
-import com.simple.weather.app.SimpleWeatherApp
+import com.simple.weather.SimpleWeatherApp
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

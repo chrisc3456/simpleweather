@@ -1,4 +1,4 @@
-package com.simple.weather.app
+package com.simple.weather
 
 import android.app.Application
 import com.simple.weather.di.component.AppComponent

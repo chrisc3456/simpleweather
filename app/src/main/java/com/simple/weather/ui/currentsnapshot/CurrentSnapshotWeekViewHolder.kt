@@ -15,7 +15,7 @@ class CurrentSnapshotWeekViewHolder(val binding: ItemDayForecastBinding): Recycl
         // Pass the forecast time to the navigation target fragment
         binding.root.setOnClickListener {
             it.findNavController().navigate(
-                CurrentSnapshotFragmentDirections.actionCurrentSnapshotFragmentToWeekForecastFragment(snapshot.time)
+                CurrentSnapshotFragmentDirections.actionCurrentSnapshotFragmentToWeekForecastFragment(snapshot.time, snapshot.iconDescription)
             )
         }
     }

@@ -6,26 +6,33 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.simple.weather.R
-import com.simple.weather.SimpleWeatherApp
+import com.simple.weather.databinding.FragmentWeekForecastBinding
+import com.simple.weather.ui.common.BaseFragment
+import com.simple.weather.util.WeatherIconConverter
 import kotlinx.android.synthetic.main.fragment_week_forecast.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeekForecastFragment : Fragment() {
+class WeekForecastFragment : BaseFragment() {
 
+    private lateinit var weekForecastBinding: FragmentWeekForecastBinding
     private lateinit var weekForecastAdapter: WeekForecastViewPagerAdapter
     private var defaultForecastTime: Long = 0
     private var defaultTab: Int = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_week_forecast, container, false)
+
         defaultForecastTime = WeekForecastFragmentArgs.fromBundle(requireArguments()).forecastTime
-        return inflater.inflate(R.layout.fragment_week_forecast, container, false)
+        setupBindings(view)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,10 +42,25 @@ class WeekForecastFragment : Fragment() {
         setupTabLayout()
     }
 
+    private fun setupBindings(view: View) {
+        val defaultIconDesc = WeekForecastFragmentArgs.fromBundle(requireArguments()).defaultWeatherIcon
+        weekForecastBinding = FragmentWeekForecastBinding.bind(view)
+        weekForecastBinding.lifecycleOwner = viewLifecycleOwner
+        weekForecastBinding.currentDayBackdrop = WeatherIconConverter.getBackdropIdForDescription(defaultIconDesc)
+    }
+
     private fun setupViewPager() {
         weekForecastAdapter = WeekForecastViewPagerAdapter(this)
         viewPagerWeekForecast.adapter = weekForecastAdapter
         viewPagerWeekForecast.offscreenPageLimit = 1
+
+        // Register a callback for page changes so we can pull the updated icon description from the selected day fragment to update the background for the host fragment
+        viewPagerWeekForecast.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                weekForecastAdapter.getIconDescForPosition(position)?.let { updateBackdrop(it) }
+            }
+        })
     }
 
     private fun setupTabLayout() {
@@ -75,7 +97,7 @@ class WeekForecastFragment : Fragment() {
             setupActionBarWithNavController(findNavController())
 
             supportActionBar?.apply {
-                title = (requireActivity().application as SimpleWeatherApp).currentLocationName
+                title = weatherApplication.currentLocationName
                 setDisplayShowTitleEnabled(true)
                 setDisplayHomeAsUpEnabled(true)
                 setHomeAsUpIndicator(R.drawable.ic_arrow_back)
@@ -88,5 +110,9 @@ class WeekForecastFragment : Fragment() {
             android.R.id.home -> requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateBackdrop(iconDescription: String) {
+        imageViewBackdrop.setImageResource(WeatherIconConverter.getBackdropIdForDescription(iconDescription))
     }
 }

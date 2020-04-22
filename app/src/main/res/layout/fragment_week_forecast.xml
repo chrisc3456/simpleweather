@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:src="@drawable/backdrop_gradient_rainy"
-            app:srcCompat="@{currentDayBackdrop, default=@drawable/backdrop_gradient_sunny}"
+            app:srcCompat="@{currentDayBackdrop}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

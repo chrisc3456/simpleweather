@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_day_forecast.*
 import java.util.*
 import javax.inject.Inject
 
-class DayForecastFragment : BaseFragment() {
+class DayForecastFragment(val updateDayIcon: (String) -> Unit) : BaseFragment() {
 
     private val hourForecastAdapter = DayForecastHourAdapter()
     private var dayNumber: Int = 0
@@ -99,6 +99,7 @@ class DayForecastFragment : BaseFragment() {
 
         if (dayForecast != null) {
             hourForecastAdapter.setHourlyForecasts(result.resultData.hourlyForecasts.take(24))
+            updateDayIcon(dayForecast.iconDescription)
         }
 
         displayResultError(result)

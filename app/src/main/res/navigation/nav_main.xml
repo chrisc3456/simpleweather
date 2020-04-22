@@ -21,5 +21,8 @@
         <argument
             android:name="forecastTime"
             app:argType="long" />
+        <argument
+            android:name="defaultWeatherIcon"
+            app:argType="string" />
     </fragment>
 </navigation>

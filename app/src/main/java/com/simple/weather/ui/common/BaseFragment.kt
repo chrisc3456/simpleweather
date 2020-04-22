@@ -1,6 +1,9 @@
 package com.simple.weather.ui.common
 
 import android.content.Context
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.simple.weather.SimpleWeatherApp
 
@@ -10,5 +13,29 @@ open class BaseFragment: Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         weatherApplication = requireActivity().application as SimpleWeatherApp
+    }
+
+    /**
+     * Adds an inset listener for the provided view to override system UI flags and apply system insets for the top status bar
+     */
+    fun applyTopSystemInsetsToView(view: View) {
+        view.setOnApplyWindowInsetsListener { v, insets ->
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                topMargin = insets.systemWindowInsetTop
+            }
+            insets
+        }
+    }
+
+    /**
+     * Adds an inset listener for the provided view to override system UI flags and apply system insets for the bottom navigation bar
+     */
+    fun applyBottomSystemInsetsToView(view: View) {
+        view.setOnApplyWindowInsetsListener { v, insets ->
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.systemWindowInsetBottom
+            }
+            insets
+        }
     }
 }

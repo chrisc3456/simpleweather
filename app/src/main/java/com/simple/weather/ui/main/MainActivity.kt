@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         // Set system visibility to overlap the status bar at the top of the screen
         // colorPrimaryDark set to transparent with child fragments handling insets to adjust which content moves through the status bar on scroll
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN + View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN + View.SYSTEM_UI_FLAG_LAYOUT_STABLE + View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
     }
 }

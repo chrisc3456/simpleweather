@@ -13,7 +13,7 @@
 
 	<color name="colorToolbarBackground">#33000000</color>
 	<color name="colorTabsBackground">#33000000</color>
-	<color name="colorTabsIndicator">@color/colorAccent</color>
+	<color name="colorTabsIndicator">@color/colorPrimary</color>
 	<color name="colorTabsText">#ffcccccc</color>
 	<color name="colorTabsTextSelected">#ffffffff</color>
 

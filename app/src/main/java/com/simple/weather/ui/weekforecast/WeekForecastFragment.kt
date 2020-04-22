@@ -88,7 +88,7 @@ class WeekForecastFragment : BaseFragment() {
             defaultTab = position
         }
 
-        tab.text = SimpleDateFormat("EEE", Locale.getDefault()).format(calendar.time)
+        tab.text = SimpleDateFormat("EEE\nd/M", Locale.getDefault()).format(calendar.time)
     }
 
     private fun setupToolbar() {

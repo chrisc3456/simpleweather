@@ -28,8 +28,7 @@
             android:id="@+id/frameOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorForecastOverlay"
-            android:alpha="1" />
+            android:background="@color/colorForecastOverlay" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarWeekForecast"
@@ -48,11 +47,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarWeekForecast"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabIndicatorHeight="5dp"
+            app:tabIndicatorColor="@color/colorTabsIndicator"
+            app:tabIndicatorHeight="@dimen/dimenTabHeight"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/colorSummaryText"
-            app:tabTextColor="@color/colorForecastOverlay" />
+            app:tabSelectedTextColor="@color/colorTabsTextSelected"
+            app:tabTextColor="@color/colorTabsText" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerWeekForecast"

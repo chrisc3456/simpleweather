@@ -14,11 +14,23 @@
 	<color name="colorToolbarBackground">#33000000</color>
 	<color name="colorTabsBackground">#33000000</color>
 	<color name="colorTabsIndicator">@color/colorAccent</color>
-	<color name="colorTabsText">@color/colorPrimary</color>
-	<color name="colorTabsTextSelected">@color/colorPrimary</color>
+	<color name="colorTabsText">#ffcccccc</color>
+	<color name="colorTabsTextSelected">#ffffffff</color>
 
 	<color name="colorForecastOverlay">#44000000</color>
 	<color name="colorLightOverlay">#44ffffff</color>
 
 	<color name="colorProgressBar">@color/colorSummaryIcons</color>
+
+	<color name="colorIconSun">#fffdd835</color>
+	<color name="colorIconCloud">#ffeeeeee</color>
+	<color name="colorIconRain">#ff039be5</color>
+	<color name="colorIconSnow">#ffe1f5fe</color>
+	<color name="colorIconSleet">#ffe1f5fe</color>
+	<color name="colorIconMoon">#fffff59d</color>
+	<color name="colorIconStar">#fffffde7</color>
+	<color name="colorIconLightning">#fffdd835</color>
+	<color name="colorIconWind">#ffbdbdbd</color>
+	<color name="colorIconFog">#fffafafa</color>
+	<color name="colorIconHail">#ffe1f5fe</color>
 </resources>

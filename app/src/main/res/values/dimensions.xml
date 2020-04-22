@@ -7,5 +7,6 @@
     <dimen name="dimenTextSizeGroupTitle">14sp</dimen>
     <dimen name="dimenTextSizeFieldTitle">12sp</dimen>
     <dimen name="dimenTextSizeFieldValue">12sp</dimen>
+    <dimen name="dimenTabHeight">5dp</dimen>
 
 </resources>

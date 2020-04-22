@@ -9,7 +9,7 @@
 
 	<color name="colorDividerHorizontal">#ffffffff</color>
 	<color name="colorListSeparatorVertical">#11ffffff</color>
-	<color name="colorListSeparatorHorizontal">@null</color>
+	<color name="colorListSeparatorHorizontal">@android:color/transparent</color>
 
 	<color name="colorToolbarBackground">#33000000</color>
 	<color name="colorTabsBackground">#33000000</color>

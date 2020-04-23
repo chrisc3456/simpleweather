@@ -137,6 +137,10 @@ object DarkSkyForecastResponse {
                     hour = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.HOUR_OF_DAY),
                     minutes = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.MINUTE),
                     temperature = it.temperature.toInt(),
+                    feelsLike = it.apparentTemperature.toInt(),
+                    windSpeed = it.windSpeed.toInt(),
+                    rainChance = it.precipProbability.toInt(),
+                    uvLevel = it.uvIndex,
                     summary = it.summary,
                     iconDescription = it.icon
                 )

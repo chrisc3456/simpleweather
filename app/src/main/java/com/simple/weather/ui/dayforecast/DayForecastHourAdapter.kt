@@ -11,6 +11,9 @@ import com.simple.weather.databinding.ItemHourForecastBinding
 class DayForecastHourAdapter: RecyclerView.Adapter<DayForecastHourViewHolder>() {
 
     private var hourlyForecasts: List<HourlyForecast> = listOf()
+    private lateinit var attachedToRecycler: RecyclerView
+    var expandedPosition = RecyclerView.NO_POSITION
+    var prevExpandedPosition = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayForecastHourViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,7 +26,12 @@ class DayForecastHourAdapter: RecyclerView.Adapter<DayForecastHourViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: DayForecastHourViewHolder, position: Int) {
-        holder.bindItem(hourlyForecasts[position])
+        holder.bindItem(this, hourlyForecasts[position])
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        attachedToRecycler = recyclerView
     }
 
     fun setHourlyForecasts(forecasts: List<HourlyForecast>) {

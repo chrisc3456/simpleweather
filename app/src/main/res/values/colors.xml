@@ -7,8 +7,9 @@
 	<color name="colorSummaryText">#ffffffff</color>
 	<color name="colorSummaryIcons">#ffffffff</color>
 
-	<color name="colorDividerHorizontal">#ffffffff</color>
-	<color name="colorListSeparatorVertical">#11ffffff</color>
+	<color name="colorDivider">#ffffffff</color>
+	<color name="colorDividerLight">#22ffffff</color>
+	<color name="colorListSeparatorVertical">#22ffffff</color>
 	<color name="colorListSeparatorHorizontal">@android:color/transparent</color>
 
 	<color name="colorToolbarBackground">#33000000</color>
@@ -24,7 +25,7 @@
 
 	<color name="colorIconSun">#fffdd835</color>
 	<color name="colorIconCloud">#ffeeeeee</color>
-	<color name="colorIconRain">#ff039be5</color>
+	<color name="colorIconRain">#ff90caf9</color>
 	<color name="colorIconSnow">#ffe1f5fe</color>
 	<color name="colorIconSleet">#ffe1f5fe</color>
 	<color name="colorIconMoon">#fffff59d</color>

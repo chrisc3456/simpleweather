@@ -1,13 +1,13 @@
 package com.simple.weather.data.repository
 
 import com.simple.weather.BuildConfig
+import com.simple.weather.api.DarkSkyForecastResponse.toCurrentSnapshot
+import com.simple.weather.api.DarkSkyWeatherForecastService
+import com.simple.weather.api.GoogleGeocodingResponse.toLocationSummary
+import com.simple.weather.api.GoogleGeocodingService
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
 import com.simple.weather.data.models.Result
-import com.simple.weather.data.remote.DarkSkyForecastResponse.toCurrentSnapshot
-import com.simple.weather.data.remote.DarkSkyWeatherForecastService
-import com.simple.weather.data.remote.GoogleGeocodingResponse.toLocationSummary
-import com.simple.weather.data.remote.GoogleGeocodingService
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton

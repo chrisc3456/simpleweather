@@ -1,10 +1,10 @@
 package com.simple.weather.data.repository
 
 import com.simple.weather.BuildConfig
+import com.simple.weather.api.DarkSkyForecastResponse.toDayForecast
+import com.simple.weather.api.DarkSkyWeatherForecastService
 import com.simple.weather.data.models.DayForecast
 import com.simple.weather.data.models.Result
-import com.simple.weather.data.remote.DarkSkyForecastResponse.toDayForecast
-import com.simple.weather.data.remote.DarkSkyWeatherForecastService
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*

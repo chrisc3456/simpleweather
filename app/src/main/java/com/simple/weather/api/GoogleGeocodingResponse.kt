@@ -1,4 +1,4 @@
-package com.simple.weather.data.remote
+package com.simple.weather.api
 
 import com.simple.weather.data.models.LocationSummary
 

@@ -1,4 +1,4 @@
-package com.simple.weather.data.remote
+package com.simple.weather.api
 
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.DailySnapshot
@@ -139,7 +139,7 @@ object DarkSkyForecastResponse {
                     temperature = it.temperature.toInt(),
                     feelsLike = it.apparentTemperature.toInt(),
                     windSpeed = it.windSpeed.toInt(),
-                    rainChance = it.precipProbability.toInt(),
+                    rainChance = (it.precipProbability * 100).toInt(),
                     uvLevel = it.uvIndex,
                     summary = it.summary,
                     iconDescription = it.icon

@@ -135,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginStart="4dp"
                     android:text="@{String.valueOf(hourlyForecast.rainChance).concat(@string/unit_rain_likelihood)}"
                     android:textColor="@color/colorSummaryText"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewRainChance"
@@ -160,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginStart="4dp"
                     android:text="@{String.valueOf(hourlyForecast.windSpeed)}"
                     android:textColor="@color/colorSummaryText"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewWindSpeed"
@@ -185,6 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginStart="4dp"
                     android:text="@{hourlyForecast.getDisplayUvIndex()}"
                     android:textColor="@color/colorSummaryText"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewUvLevel"
@@ -210,6 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginStart="4dp"
                     android:text="@{String.valueOf(hourlyForecast.feelsLike).concat(@string/unit_temperature_degree)}"
                     android:textColor="@color/colorSummaryText"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewFeelsLike"
@@ -217,18 +221,6 @@
                     app:layout_constraintStart_toEndOf="@+id/imageViewFeelsLike"
                     app:layout_constraintTop_toTopOf="@id/imageViewFeelsLike"
                     tools:text="@string/placeholder_temperature" />
-
-                <View
-                    android:id="@+id/dividerMiddle"
-                    android:layout_width="1dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/colorDividerLight"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/dividerStart"
@@ -239,6 +231,18 @@
                     android:background="@color/colorDividerLight"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/dividerMiddle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/dividerMiddle"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorDividerLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

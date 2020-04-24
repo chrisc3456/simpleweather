@@ -24,6 +24,7 @@ android {
             buildConfigField "String", "DarkSkyBaseUrl", Weather_DarkSkyBaseUrl
             buildConfigField "String", "GeocodingApiKey", Weather_GoogleGeocodingApiKey
             buildConfigField "String", "GeocodingBaseUrl", Weather_GoogleGeocodingBaseUrl
+            buildConfigField "String", "PlacesApiKey", Weather_GooglePlacesApiKey
         }
 
         release {
@@ -33,6 +34,7 @@ android {
             buildConfigField "String", "DarkSkyApiKey", Weather_DarkSkyBaseUrl
             buildConfigField "String", "GeocodingApiKey", Weather_GoogleGeocodingApiKey
             buildConfigField "String", "GeocodingBaseUrl", Weather_GoogleGeocodingBaseUrl
+            buildConfigField "String", "PlacesApiKey", Weather_GooglePlacesApiKey
         }
     }
 
@@ -81,4 +83,5 @@ dependencies {
 
     // Location services
     implementation "com.google.android.gms:play-services-location:$location_services_version"
+    implementation "com.google.android.libraries.places:places:$places_library_version"
 }

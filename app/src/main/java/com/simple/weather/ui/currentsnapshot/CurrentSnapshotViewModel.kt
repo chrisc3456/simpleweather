@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
+import com.google.android.libraries.places.api.model.Place
 import com.simple.weather.SimpleWeatherApp
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
@@ -24,8 +25,20 @@ class CurrentSnapshotViewModel @Inject constructor(private val application: Simp
     val locationResult = MutableLiveData<Result<LocationSummary>>().apply { value = Result.loading(null) }
     val locationPermissionRequired = MutableLiveData<Boolean>()
 
-    fun requestSnapshot() {
-        checkLocationPermissions()
+    /**
+     * Request a forecast snapshot from the repository for the specified place, or using location services if none provided
+     */
+    fun requestSnapshot(place: Place?) {
+        if (place == null) {
+            checkLocationPermissions()
+        } else {
+            locationResult.postValue(
+                Result.completeWithSuccess(
+                    LocationSummary(place.latLng?.latitude ?: 0.0, place.latLng?.longitude ?: 0.0, place.name ?: "")
+                )
+            )
+            getForecastSnapshot(place.latLng?.latitude ?: 0.0, place.latLng?.longitude ?: 0.0)
+        }
     }
 
     /**

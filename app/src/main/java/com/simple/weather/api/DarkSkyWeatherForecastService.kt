@@ -1,4 +1,4 @@
-package com.simple.weather.data.remote
+package com.simple.weather.api
 
 import retrofit2.Call
 import retrofit2.http.GET

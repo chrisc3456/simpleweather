@@ -1,0 +1,13 @@
+<vector android:height="48dp" android:viewportHeight="64"
+    android:viewportWidth="64" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:translateX="64"
+        android:translateY="64"
+        android:rotation="180">
+        <path android:fillColor="#00000000"
+            android:pathData="m32,1a31,31 0,1 0,31 31a31,31 0,0 0,-31 -31zM34,60.92a30,30 0,0 1,0 -57.84a29,29 0,0 1,0 57.84z"
+            android:strokeColor="@color/colorSummaryIcons" android:strokeWidth="1"/>
+        <path android:fillColor="@color/colorSummaryIcons"
+            android:pathData="M7.8962,32.0884a27.4057,30.1887 0,1 0,54.8113 0a27.4057,30.1887 0,1 0,-54.8113 0z" android:strokeWidth="1.5"/>
+    </group>
+</vector>

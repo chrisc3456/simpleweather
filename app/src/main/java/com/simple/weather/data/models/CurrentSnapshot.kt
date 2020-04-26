@@ -39,4 +39,8 @@ data class CurrentSnapshot(
     fun getMoonPhaseDescription(): String {
         return MoonPhaseConverter.convertPhaseToDescription(moonPhase)
     }
+
+    fun getMoonPhaseIcon(): Int {
+        return MoonPhaseConverter.convertPhaseToIconId(moonPhase)
+    }
 }

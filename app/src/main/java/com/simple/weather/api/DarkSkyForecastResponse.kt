@@ -6,6 +6,7 @@ import com.simple.weather.data.models.DayForecast
 import com.simple.weather.data.models.HourlyForecast
 import com.simple.weather.util.UnixTimeConverter
 import java.util.*
+import kotlin.math.roundToInt
 
 object DarkSkyForecastResponse {
 
@@ -89,18 +90,18 @@ object DarkSkyForecastResponse {
         return CurrentSnapshot(
             latitude = latitude,
             longitude = longitude,
-            cloudCover = (currently.cloudCover * 100).toInt(),
-            humidity = (currently.humidity * 100).toInt(),
+            cloudCover = (currently.cloudCover * 100).roundToInt(),
+            humidity = (currently.humidity * 100).roundToInt(),
             icon = currently.icon,
             precipitationVolume = currently.precipIntensity,
-            precipitationLikelihood = (currently.precipProbability * 100).toInt(),
-            pressure = currently.pressure.toInt(),
+            precipitationLikelihood = (currently.precipProbability * 100).roundToInt(),
+            pressure = currently.pressure.roundToInt(),
             summary = currently.summary,
-            temperature = currently.temperature.toInt(),
+            temperature = currently.temperature.roundToInt(),
             time = currently.time,
-            visibility = (currently.visibility).toInt(),
+            visibility = (currently.visibility).roundToInt(),
             windBearing = currently.windBearing,
-            windSpeed = currently.windSpeed,
+            windSpeed = currently.windSpeed.roundToInt(),
             sunrise = daily.sunriseTime,
             sunset = daily.sunsetTime,
             moonPhase = daily.moonPhase,
@@ -116,8 +117,8 @@ object DarkSkyForecastResponse {
             DailySnapshot(
                 time = it.time,
                 iconDescription = it.icon,
-                temperatureMax = it.temperatureHigh.toInt(),
-                temperatureMin = it.temperatureLow.toInt()
+                temperatureMax = it.temperatureHigh.roundToInt(),
+                temperatureMin = it.temperatureLow.roundToInt()
             )
         }
     }
@@ -136,10 +137,10 @@ object DarkSkyForecastResponse {
                 HourlyForecast(
                     hour = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.HOUR_OF_DAY),
                     minutes = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.MINUTE),
-                    temperature = it.temperature.toInt(),
-                    feelsLike = it.apparentTemperature.toInt(),
-                    windSpeed = it.windSpeed.toInt(),
-                    rainChance = (it.precipProbability * 100).toInt(),
+                    temperature = it.temperature.roundToInt(),
+                    feelsLike = it.apparentTemperature.roundToInt(),
+                    windSpeed = it.windSpeed.roundToInt(),
+                    rainChance = (it.precipProbability * 100).roundToInt(),
                     uvLevel = it.uvIndex,
                     summary = it.summary,
                     iconDescription = it.icon

@@ -24,35 +24,38 @@
                 android:id="@+id/imageViewSunset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_sunset"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_sunset" />
 
             <TextView
                 android:id="@+id/textViewSunsetTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/heading_sunset"
+                android:textAlignment="center"
                 android:textColor="@color/colorSummaryText"
                 android:textSize="@dimen/dimenTextSizeFieldTitle"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewSunset"
-                app:layout_constraintStart_toStartOf="@+id/imageViewSunset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewSunset" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewSunset"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@{currentsnapshot.getSunsetTime()}"
-                android:textStyle="bold"
+                android:textAlignment="center"
                 android:textColor="@color/colorSummaryText"
                 android:textSize="@dimen/dimenTextSizeFieldValue"
-                android:textAlignment="center"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewSunset"
-                app:layout_constraintStart_toStartOf="@+id/imageViewSunset"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSunsetTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

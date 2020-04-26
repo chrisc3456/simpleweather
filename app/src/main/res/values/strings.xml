@@ -5,15 +5,14 @@
     <string name="unit_temperature_degree">\u00B0</string>
     <string name="unit_temperature_celsius">C</string>
     <string name="unit_temperature_fahrenheit">F</string>
-    <string name="unit_wind_speed_metric">kph</string>
-    <string name="unit_wind_speed_imperial">mph</string>
+    <string name="unit_wind_speed_metric">\u0020kph</string>
+    <string name="unit_wind_speed_imperial">\u0020mph</string>
     <string name="unit_rain_likelihood">%</string>
-    <string name="unit_rain_volume">mm/h</string>
     <string name="unit_cloud_cover">%</string>
     <string name="unit_humidity">%</string>
-    <string name="unit_pressure">mb</string>
-    <string name="unit_distance_metric">km</string>
-    <string name="unit_distance_imperial">miles</string>
+    <string name="unit_pressure">\u0020mb</string>
+    <string name="unit_distance_metric">\u0020km</string>
+    <string name="unit_distance_imperial">\u0020miles</string>
 
     <!-- Menu items -->
     <string name="menu_search">Search</string>
@@ -27,7 +26,7 @@
 
     <!-- UI headings -->
     <string name="heading_wind_speed">Wind Speed</string>
-    <string name="heading_rain_likelihood">Rain Chance</string>
+    <string name="heading_rain_likelihood">Rain Likelihood</string>
     <string name="heading_humidity">Humidity</string>
     <string name="heading_pressure">Pressure</string>
     <string name="heading_cloud_cover">Cloud Cover</string>

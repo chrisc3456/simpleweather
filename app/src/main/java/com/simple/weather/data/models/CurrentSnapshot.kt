@@ -18,15 +18,14 @@ data class CurrentSnapshot(
     val time: Long,
     val visibility: Int,
     val windBearing: Int,
-    val windSpeed: Double,
+    val windSpeed: Int,
     val sunrise: Long,
     val sunset: Long,
     val moonPhase: Double,
     val dailySnapshots: List<DailySnapshot>
 ) {
     fun getSnapshotTime(): String {
-        //TODO: Consider timezone issues - response from service is relative to requested location which may be different to local timezone
-        return SimpleDateFormat("EEEE d MMMM, Ka", Locale.UK).format(Date(time * 1000))
+        return SimpleDateFormat("EEEE d MMMM, Ka", Locale.getDefault()).format(Date(time * 1000))
     }
 
     fun getSunriseTime(): String {

@@ -24,18 +24,17 @@
                 android:id="@+id/imageViewMoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_moon_phase_new"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_moon_phase_new" />
 
             <TextView
                 android:id="@+id/textViewMoon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
                 android:layout_marginBottom="8dp"
                 android:lineSpacingExtra="1sp"
                 android:text="@{currentsnapshot.getMoonPhaseDescription()}"
@@ -44,8 +43,8 @@
                 android:textSize="@dimen/dimenTextSizeFieldValue"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewMoon"
-                app:layout_constraintStart_toStartOf="@+id/imageViewMoon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewMoon" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

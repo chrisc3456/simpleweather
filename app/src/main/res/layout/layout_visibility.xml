@@ -24,35 +24,37 @@
                 android:id="@+id/imageViewVisibility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_visibility"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_visibility" />
 
             <TextView
                 android:id="@+id/textViewVisibilityTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/heading_visibility"
+                android:textAlignment="center"
                 android:textColor="@color/colorSummaryText"
                 android:textSize="@dimen/dimenTextSizeFieldTitle"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewVisibility"
-                app:layout_constraintStart_toStartOf="@+id/imageViewVisibility"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewVisibility" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@{String.valueOf(currentsnapshot.visibility).concat(@string/unit_distance_imperial)}"
-                android:textStyle="bold"
+                android:textAlignment="center"
                 android:textColor="@color/colorSummaryText"
                 android:textSize="@dimen/dimenTextSizeFieldValue"
-                android:textAlignment="center"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewVisibility"
-                app:layout_constraintStart_toStartOf="@+id/imageViewVisibility"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewVisibilityTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

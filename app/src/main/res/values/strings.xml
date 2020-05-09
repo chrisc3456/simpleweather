@@ -33,10 +33,10 @@
     <string name="heading_visibility">Visibility</string>
     <string name="heading_sunrise">Sunrise</string>
     <string name="heading_sunset">Sunset</string>
-    <string name="heading_moon_phase">Moon</string>
 
     <!-- UI placeholders -->
     <string name="placeholder_temperature">NN\u00B0</string>
-    <string name="placeholder_wind_speed">NNmph</string>
     <string name="placeholder_rain_chance">NN%</string>
+    <string name="placeholder_weather_description">Sunny</string>
+    <string name="placeholder_time">NN:NNam</string>
 </resources>

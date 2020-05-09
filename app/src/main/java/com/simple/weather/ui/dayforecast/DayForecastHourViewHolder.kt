@@ -9,14 +9,14 @@ import kotlinx.android.synthetic.main.item_hour_forecast.view.*
 
 class DayForecastHourViewHolder(val binding: ItemHourForecastBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bindItem(adapter: DayForecastHourAdapter, forecast: HourlyForecast) {
+    fun bindItem(adapter: DayForecastAdapter, forecast: HourlyForecast) {
         binding.hourlyForecast = forecast
         binding.hourlyForecastIcon = getIconForHour(forecast.iconDescription)
 
         updateExpandedView(adapter)
     }
 
-    private fun updateExpandedView(adapter: DayForecastHourAdapter) {
+    private fun updateExpandedView(adapter: DayForecastAdapter) {
         val isExpanded = adapterPosition == adapter.expandedPosition
         binding.root.constraintAdditionalContent.visibility = if (isExpanded) View.VISIBLE else View.GONE
         binding.root.isActivated = isExpanded

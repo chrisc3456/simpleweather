@@ -132,7 +132,12 @@ object DarkSkyForecastResponse {
 
         return DayForecast(
             daily?.time ?: 0,
+            daily?.sunriseTime ?: 0,
+            daily?.sunsetTime ?: 0,
             daily?.icon ?: "",
+            daily?.summary ?: "",
+            daily?.temperatureHigh?.toInt() ?: 0,
+            daily?.temperatureLow?.toInt() ?: 0,
             hourly?.data?.map {
                 HourlyForecast(
                     hour = UnixTimeConverter.getCalendarFromUnixTime(it.time).get(Calendar.HOUR_OF_DAY),

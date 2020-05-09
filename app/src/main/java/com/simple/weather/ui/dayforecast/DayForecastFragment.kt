@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 class DayForecastFragment(val updateDayIcon: (String) -> Unit) : BaseFragment() {
 
-    private val hourForecastAdapter = DayForecastHourAdapter()
+    private val hourForecastAdapter = DayForecastAdapter()
     private var dayNumber: Int = 0
 
     // Inject an instance of the view model from the dagger dependency graph
@@ -98,7 +98,7 @@ class DayForecastFragment(val updateDayIcon: (String) -> Unit) : BaseFragment() 
         val dayForecast = result.resultData
 
         if (dayForecast != null) {
-            hourForecastAdapter.setHourlyForecasts(result.resultData.hourlyForecasts.take(24))
+            hourForecastAdapter.setDayForecast(dayForecast)
             updateDayIcon(dayForecast.iconDescription)
         }
 

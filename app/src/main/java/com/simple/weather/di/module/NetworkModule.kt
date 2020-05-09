@@ -16,7 +16,7 @@ class NetworkModule {
      * Singleton - tells Dagger that there should only be one instance of this dependency (can be expensive to create)
      * Provides - tells Dagger that the method will provide a certain type of dependency, in this case a Retrofit service
      *
-     * Whenever Dagger needs to provide an instance of type [DarkSkyDailyForecastService], this function is executed
+     * Whenever Dagger needs to provide an instance of type [DarkSkyWeatherForecastService], this function is executed
      */
     @Singleton
     @Provides

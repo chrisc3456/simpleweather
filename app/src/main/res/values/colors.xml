@@ -13,14 +13,13 @@
 	<color name="colorListSeparatorVertical">#22ffffff</color>
 	<color name="colorListSeparatorHorizontal">@android:color/transparent</color>
 
-	<color name="colorToolbarBackground">#33000000</color>
-	<color name="colorTabsBackground">#33000000</color>
 	<color name="colorTabsIndicator">@color/colorPrimary</color>
 	<color name="colorTabsText">#ffcccccc</color>
 	<color name="colorTabsTextSelected">#ffffffff</color>
 
 	<color name="colorForecastOverlay">#44000000</color>
-	<color name="colorLightOverlay">#44ffffff</color>
+	<color name="colorLightOverlay">#33ffffff</color>
+	<color name="colorTransOverlay">@android:color/transparent</color>
 
 	<color name="colorProgressBar">@color/colorSummaryIcons</color>
 

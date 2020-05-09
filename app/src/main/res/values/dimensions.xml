@@ -3,10 +3,10 @@
 
     <dimen name="dimenDefaultCardViewRadius">4dp</dimen>
     <dimen name="dimenDefaultBorderPadding">8dp</dimen>
-    <dimen name="dimenLargeWeatherIcon">200dp</dimen>
     <dimen name="dimenTextSizeGroupTitle">14sp</dimen>
     <dimen name="dimenTextSizeFieldTitle">12sp</dimen>
     <dimen name="dimenTextSizeFieldValue">12sp</dimen>
     <dimen name="dimenTabHeight">5dp</dimen>
+    <dimen name="dimenDaySummaryImageSize">24dp</dimen>
 
 </resources>

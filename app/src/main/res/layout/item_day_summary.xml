@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="daySummary"
+            type="com.simple.weather.data.models.DayForecast" />
+
+        <variable
+            name="daySummaryIcon"
+            type="Integer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorTransOverlay"
+        app:cardCornerRadius="@dimen/dimenDefaultCardViewRadius"
+        app:cardElevation="0dp"
+        app:contentPadding="@dimen/dimenDefaultBorderPadding">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewDayWeatherIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@{daySummaryIcon, default=@drawable/ic_weather_sun}" />
+
+            <TextView
+                android:id="@+id/textViewTempHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(daySummary.temperatureMax).concat(@string/unit_temperature_degree)}"
+                android:textColor="@color/colorSummaryText"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewTempHigh"
+                app:layout_constraintEnd_toEndOf="@+id/textViewWeatherDescription"
+                app:layout_constraintTop_toTopOf="@+id/imageViewTempHigh"
+                tools:text="@string/placeholder_temperature" />
+
+            <TextView
+                android:id="@+id/textViewTempLow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(daySummary.temperatureMin).concat(@string/unit_temperature_degree)}"
+                android:textColor="@color/colorSummaryText"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewTempLow"
+                app:layout_constraintEnd_toEndOf="@+id/textViewWeatherDescription"
+                app:layout_constraintTop_toTopOf="@+id/imageViewTempLow"
+                tools:text="@string/placeholder_temperature" />
+
+            <ImageView
+                android:id="@+id/imageViewTempHigh"
+                android:layout_width="@dimen/dimenDaySummaryImageSize"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintEnd_toStartOf="@+id/textViewTempHigh"
+                app:layout_constraintTop_toBottomOf="@+id/textViewWeatherDescription"
+                app:srcCompat="@drawable/ic_temperature_high" />
+
+            <ImageView
+                android:id="@+id/imageViewTempLow"
+                android:layout_width="@dimen/dimenDaySummaryImageSize"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="@+id/imageViewTempHigh"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewTempHigh"
+                app:srcCompat="@drawable/ic_temperature_low" />
+
+            <TextView
+                android:id="@+id/textViewWeatherDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{daySummary.summary}"
+                android:textColor="@color/colorSummaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewDayWeatherIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/placeholder_weather_description" />
+
+            <ImageView
+                android:id="@+id/imageViewDaySunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimenDaySummaryImageSize"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="@+id/textViewWeatherDescription"
+                app:layout_constraintTop_toBottomOf="@+id/textViewWeatherDescription"
+                app:srcCompat="@drawable/ic_sunrise" />
+
+            <ImageView
+                android:id="@+id/imageViewDaySunset"
+                android:layout_width="@dimen/dimenDaySummaryImageSize"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="@+id/textViewWeatherDescription"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewDaySunrise"
+                app:srcCompat="@drawable/ic_sunset" />
+
+            <TextView
+                android:id="@+id/textViewDaySunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{daySummary.getSunriseTime()}"
+                android:textColor="@color/colorSummaryText"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewDaySunrise"
+                app:layout_constraintStart_toEndOf="@+id/imageViewDaySunrise"
+                app:layout_constraintTop_toTopOf="@+id/imageViewDaySunrise"
+                tools:text="@string/placeholder_time" />
+
+            <TextView
+                android:id="@+id/textViewDaySunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{daySummary.getSunsetTime()}"
+                android:textColor="@color/colorSummaryText"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewDaySunset"
+                app:layout_constraintStart_toEndOf="@+id/imageViewDaySunset"
+                app:layout_constraintTop_toTopOf="@+id/imageViewDaySunset"
+                tools:text="@string/placeholder_time" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

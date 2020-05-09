@@ -73,7 +73,7 @@ class WeekForecastFragment : BaseFragment() {
         // Setting currentItem doesn't always work with event timing, hence processing in a delayed handler
         // See bottom answer here: https://stackoverflow.com/questions/28968512/viewpager-set-current-page-programmatically
         viewPagerWeekForecast.postDelayed(
-            Runnable {
+            {
                 kotlin.run { viewPagerWeekForecast.setCurrentItem(defaultTab, true) }
             }, 10
         )

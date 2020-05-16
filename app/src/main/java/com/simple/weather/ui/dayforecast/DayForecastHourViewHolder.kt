@@ -9,26 +9,26 @@ import kotlinx.android.synthetic.main.item_hour_forecast.view.*
 
 class DayForecastHourViewHolder(val binding: ItemHourForecastBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bindItem(adapter: DayForecastAdapter, forecast: HourlyForecast) {
+    fun bindItem(hourAdapter: DayForecastHourAdapter, forecast: HourlyForecast) {
         binding.hourlyForecast = forecast
         binding.hourlyForecastIcon = getIconForHour(forecast.iconDescription)
 
-        updateExpandedView(adapter)
+        updateExpandedView(hourAdapter)
     }
 
-    private fun updateExpandedView(adapter: DayForecastAdapter) {
-        val isExpanded = adapterPosition == adapter.expandedPosition
+    private fun updateExpandedView(hourAdapter: DayForecastHourAdapter) {
+        val isExpanded = adapterPosition == hourAdapter.expandedPosition
         binding.root.constraintAdditionalContent.visibility = if (isExpanded) View.VISIBLE else View.GONE
         binding.root.isActivated = isExpanded
         binding.root.setOnClickListener {
-            adapter.expandedPosition = if (isExpanded) -1 else adapterPosition
+            hourAdapter.expandedPosition = if (isExpanded) -1 else adapterPosition
 
-            if (adapter.prevExpandedPosition != RecyclerView.NO_POSITION) {
-                adapter.notifyItemChanged(adapter.prevExpandedPosition)
+            if (hourAdapter.prevExpandedPosition != RecyclerView.NO_POSITION) {
+                hourAdapter.notifyItemChanged(hourAdapter.prevExpandedPosition)
             }
 
-            adapter.notifyItemChanged(adapterPosition)
-            adapter.prevExpandedPosition = adapterPosition
+            hourAdapter.notifyItemChanged(adapterPosition)
+            hourAdapter.prevExpandedPosition = adapterPosition
         }
     }
 

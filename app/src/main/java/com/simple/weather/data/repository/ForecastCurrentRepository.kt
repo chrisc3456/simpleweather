@@ -5,6 +5,8 @@ import com.simple.weather.api.DarkSkyForecastResponse.toCurrentSnapshot
 import com.simple.weather.api.DarkSkyWeatherForecastService
 import com.simple.weather.api.GoogleGeocodingResponse.toLocationSummary
 import com.simple.weather.api.GoogleGeocodingService
+import com.simple.weather.data.db.FavouriteLocationEntity
+import com.simple.weather.data.db.WeatherDatabase
 import com.simple.weather.data.models.CurrentSnapshot
 import com.simple.weather.data.models.LocationSummary
 import com.simple.weather.data.models.Result
@@ -13,9 +15,21 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ForecastCurrentRepository @Inject constructor(private val forecastService: DarkSkyWeatherForecastService, private val geocodingService: GoogleGeocodingService): CurrentSnapshotRepository {
+class ForecastCurrentRepository @Inject constructor(
+    private val forecastService: DarkSkyWeatherForecastService,
+    private val geocodingService: GoogleGeocodingService,
+    private val weatherDatabase: WeatherDatabase
+): CurrentSnapshotRepository {
 
     //TODO: Implement Room as a local db to support scenarios where network is unavailable - i.e. consider showing previously obtained forecast details
+
+    override suspend fun saveFavouriteLocation(name: String, latitude: Double, longitude: Double) {
+        if (weatherDatabase.locationDao().getLocationFromCoords(latitude, longitude).isEmpty()) {
+            weatherDatabase.locationDao().insertLocation(
+                FavouriteLocationEntity(null, name, latitude, longitude)
+            )
+        }
+    }
 
     override suspend fun getCurrentSnapshot(latitude: Double, longitude: Double): Result<CurrentSnapshot> {
         return getCurrentSnapshotRemote(latitude, longitude)

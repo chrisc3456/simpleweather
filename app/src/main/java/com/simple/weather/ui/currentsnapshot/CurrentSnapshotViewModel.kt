@@ -93,4 +93,13 @@ class CurrentSnapshotViewModel @Inject constructor(private val application: Simp
             )
         }
     }
+
+    /**
+     * Perform repository request to store details of the specified location as a favourite for future use
+     */
+    fun saveFavouriteLocation(locationSummary: LocationSummary) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveFavouriteLocation(locationSummary.name, locationSummary.latitude, locationSummary.longitude)
+        }
+    }
 }

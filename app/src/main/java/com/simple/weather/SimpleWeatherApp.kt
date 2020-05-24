@@ -4,6 +4,7 @@ import android.app.Application
 import com.simple.weather.di.component.AppComponent
 import com.simple.weather.di.component.DaggerAppComponent
 import com.simple.weather.di.module.AppModule
+import com.simple.weather.di.module.DatabaseModule
 
 /**
  * Application subclass to set up and manage app level state/dependencies
@@ -19,5 +20,6 @@ class SimpleWeatherApp: Application() {
     val weatherComponent: AppComponent = DaggerAppComponent.builder()
         .application(this)
         .appModule(AppModule(this))
+        .databaseModule(DatabaseModule(this))
         .build()
 }

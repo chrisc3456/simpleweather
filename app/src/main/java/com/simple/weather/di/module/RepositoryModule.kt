@@ -2,6 +2,7 @@ package com.simple.weather.di.module
 
 import com.simple.weather.api.DarkSkyWeatherForecastService
 import com.simple.weather.api.GoogleGeocodingService
+import com.simple.weather.data.db.WeatherDatabase
 import com.simple.weather.data.repository.CurrentSnapshotRepository
 import com.simple.weather.data.repository.DayForecastRepository
 import com.simple.weather.data.repository.ForecastCurrentRepository
@@ -22,8 +23,8 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideCurrentSnapshotRepository(forecastService: DarkSkyWeatherForecastService, geocodingService: GoogleGeocodingService): CurrentSnapshotRepository {
-        return ForecastCurrentRepository(forecastService, geocodingService)
+    fun provideCurrentSnapshotRepository(forecastService: DarkSkyWeatherForecastService, geocodingService: GoogleGeocodingService, weatherDatabase: WeatherDatabase): CurrentSnapshotRepository {
+        return ForecastCurrentRepository(forecastService, geocodingService, weatherDatabase)
     }
 
     @Singleton

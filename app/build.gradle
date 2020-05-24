@@ -16,6 +16,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // Specify location for export of room db definition
+                // Note using a schemas dir rather than a standard dir like app/res/raw so it doesn't ship with the app
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -84,4 +92,9 @@ dependencies {
     // Location services
     implementation "com.google.android.gms:play-services-location:$location_services_version"
     implementation "com.google.android.libraries.places:places:$places_library_version"
+
+    // Room database
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
 }

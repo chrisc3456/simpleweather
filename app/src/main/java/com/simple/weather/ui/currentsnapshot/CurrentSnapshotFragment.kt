@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -146,8 +145,7 @@ class CurrentSnapshotFragment : BaseFragment() {
      */
     private fun requestLocationPermissions(isRequired: Boolean) {
         if (isRequired) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
+            requestPermissions(
                 arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
                 PERMISSION_ID_LOCATION
             )
@@ -191,6 +189,7 @@ class CurrentSnapshotFragment : BaseFragment() {
         val locationData = result.resultData
 
         if (locationData != null) {
+            currentSnapshotViewModel.saveFavouriteLocation(locationData)
             weatherApplication.apply {
                 currentLocationName = locationData.name
                 currentLocationLatitude = locationData.latitude

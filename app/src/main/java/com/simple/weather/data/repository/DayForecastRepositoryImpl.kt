@@ -12,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ForecastDayRepository @Inject constructor(private val forecastService: DarkSkyWeatherForecastService): DayForecastRepository {
+class DayForecastRepositoryImpl @Inject constructor(private val forecastService: DarkSkyWeatherForecastService): DayForecastRepository {
 
     //TODO: Implement Room as a local db to support scenarios where network is unavailable - i.e. consider showing previously obtained forecast details
 

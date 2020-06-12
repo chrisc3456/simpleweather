@@ -15,7 +15,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ForecastCurrentRepository @Inject constructor(
+class CurrentSnapshotRepositoryImpl @Inject constructor(
     private val forecastService: DarkSkyWeatherForecastService,
     private val geocodingService: GoogleGeocodingService,
     private val weatherDatabase: WeatherDatabase
@@ -29,6 +29,11 @@ class ForecastCurrentRepository @Inject constructor(
                 FavouriteLocationEntity(null, name, latitude, longitude)
             )
         }
+    }
+
+    override suspend fun getFavouriteLocation(id: Int): LocationSummary {
+        val location = weatherDatabase.locationDao().getLocation(id)
+        return LocationSummary(location.latitude, location.longitude, location.name)
     }
 
     override suspend fun getCurrentSnapshot(latitude: Double, longitude: Double): Result<CurrentSnapshot> {

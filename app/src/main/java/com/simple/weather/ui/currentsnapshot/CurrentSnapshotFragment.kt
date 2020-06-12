@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -31,12 +30,14 @@ import javax.inject.Inject
 
 const val PERMISSION_ID_LOCATION = 1
 const val REQUEST_CODE_AUTOCOMPLETE = 1
+const val ARG_LOCATION_ID = "locationId"
 
 class CurrentSnapshotFragment : BaseFragment() {
 
     private lateinit var currentSnapshotDetailsBinding: FragmentCurrentSnapshotBinding
     private val weekForecastAdapter = CurrentSnapshotWeekAdapter()
     private var currentPlace: Place? = null
+    private var favouriteLocationId: Int? = null
 
     // Inject an instance of the view model from the dagger dependency graph
     @Inject
@@ -50,6 +51,7 @@ class CurrentSnapshotFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlacesHelper.initialisePlaces(requireContext())
+        favouriteLocationId = arguments?.getInt(ARG_LOCATION_ID)
     }
 
     override fun onResume() {
@@ -81,6 +83,7 @@ class CurrentSnapshotFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> toggleDrawerState()
             R.id.menu_item_search -> openLocationSearch()
             R.id.menu_item_location -> searchCurrentLocation()
         }
@@ -95,6 +98,8 @@ class CurrentSnapshotFragment : BaseFragment() {
         hostActivity.setupActionBarWithNavController(findNavController())
         hostActivity.supportActionBar?.title = ""
         hostActivity.supportActionBar?.setDisplayShowTitleEnabled(true)
+        hostActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        hostActivity.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
 
         collapsingToolbarForecast.setCollapsedTitleTextColor(resources.getColor(R.color.colorPrimary, requireContext().theme))
 
@@ -110,7 +115,11 @@ class CurrentSnapshotFragment : BaseFragment() {
     }
 
     private fun setupViewModel() {
-        currentSnapshotViewModel.requestSnapshot(currentPlace)
+        if (favouriteLocationId == null) {
+            currentSnapshotViewModel.requestSnapshot(currentPlace)
+        } else {
+            currentSnapshotViewModel.requestSnapshotForFavourite(favouriteLocationId!!)
+        }
     }
 
     private fun setupRecycler() {
@@ -199,16 +208,6 @@ class CurrentSnapshotFragment : BaseFragment() {
         }
 
         displayResultError(result)
-    }
-
-    /**
-     * Display details of any errors to the user
-     */
-    private fun displayResultError(result: Result<*>) {
-        if (result.state == Result.State.COMPLETE_ERROR) {
-            val toast = Toast.makeText(requireContext(), result.message, Toast.LENGTH_LONG)
-            toast.show()
-        }
     }
 
     /**

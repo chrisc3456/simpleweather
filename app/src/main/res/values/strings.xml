@@ -39,4 +39,7 @@
     <string name="placeholder_rain_chance">NN%</string>
     <string name="placeholder_weather_description">Sunny</string>
     <string name="placeholder_time">NN:NNam</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

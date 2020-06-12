@@ -42,6 +42,17 @@ class CurrentSnapshotViewModel @Inject constructor(private val application: Simp
     }
 
     /**
+     * Request a forecast snapshot from the repository for the specified favourite location id
+     */
+    fun requestSnapshotForFavourite(locationId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val locationSummary = repository.getFavouriteLocation(locationId)
+            locationResult.postValue(Result.completeWithSuccess(locationSummary))
+            getForecastSnapshot(locationSummary.latitude, locationSummary.longitude)
+        }
+    }
+
+    /**
      * Check whether the user has already granted location permissions, otherwise update the live data so permission can be requested by the UI
      */
     private fun checkLocationPermissions() {

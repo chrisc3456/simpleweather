@@ -62,6 +62,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$androidx_legacy_version"
 
     // Testing
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"

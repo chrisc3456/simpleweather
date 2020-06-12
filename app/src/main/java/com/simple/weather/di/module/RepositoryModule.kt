@@ -3,10 +3,7 @@ package com.simple.weather.di.module
 import com.simple.weather.api.DarkSkyWeatherForecastService
 import com.simple.weather.api.GoogleGeocodingService
 import com.simple.weather.data.db.WeatherDatabase
-import com.simple.weather.data.repository.CurrentSnapshotRepository
-import com.simple.weather.data.repository.DayForecastRepository
-import com.simple.weather.data.repository.ForecastCurrentRepository
-import com.simple.weather.data.repository.ForecastDayRepository
+import com.simple.weather.data.repository.*
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -24,12 +21,18 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideCurrentSnapshotRepository(forecastService: DarkSkyWeatherForecastService, geocodingService: GoogleGeocodingService, weatherDatabase: WeatherDatabase): CurrentSnapshotRepository {
-        return ForecastCurrentRepository(forecastService, geocodingService, weatherDatabase)
+        return CurrentSnapshotRepositoryImpl(forecastService, geocodingService, weatherDatabase)
     }
 
     @Singleton
     @Provides
     fun provideDayForecastRepository(forecastService: DarkSkyWeatherForecastService): DayForecastRepository {
-        return ForecastDayRepository(forecastService)
+        return DayForecastRepositoryImpl(forecastService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFavouriteLocationsRepository(weatherDatabase: WeatherDatabase): FavouriteLocationsRepository {
+        return FavouriteLocationsRepositoryImpl(weatherDatabase)
     }
 }

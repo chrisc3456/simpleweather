@@ -17,6 +17,6 @@ interface FavouriteLocationEntityDao {
     @Query("SELECT * FROM FavouriteLocationEntity WHERE id = :id")
     fun getLocation(id: Int): FavouriteLocationEntity
 
-    @Query("SELECT * FROM FAVOURITELOCATIONENTITY WHERE latitude = :latitude AND longitude = :longitude")
+    @Query("SELECT * FROM FavouriteLocationEntity WHERE latitude = :latitude AND longitude = :longitude")
     fun getLocationFromCoords(latitude: Double, longitude: Double): List<FavouriteLocationEntity>
 }
